@@ -22,6 +22,7 @@
             <th>Nazwa szkolenia</th>
             <th>Zobacz</th>
             <th>Edytuj</th>
+            <th>Usuń</th>
         </tr>
         </thead>
         <tbody>
@@ -32,6 +33,10 @@
             </td>
             <td>
                 <a th:href="'/admin/opisy/' + ${description.id} + '/edytuj'">Edytuj</a>
+            </td>
+            <td>
+                <p th:if="${description.getTrainings().size() > 0}">Opis w użyciu nie można usunąć</p>
+                <a th:if="${description.getTrainings().size() == 0}" th:href="'/admin/opisy/' + ${description.id} + '/usun'" onclick="return confirm('Czy na pewno chcesz usunąć ten opis?')">Usuń</a>
             </td>
         </tr>
 
