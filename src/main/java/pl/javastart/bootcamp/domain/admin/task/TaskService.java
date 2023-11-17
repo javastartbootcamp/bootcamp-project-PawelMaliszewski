@@ -2,6 +2,7 @@ package pl.javastart.bootcamp.domain.admin.task;
 
 import org.springframework.stereotype.Service;
 import pl.javastart.bootcamp.utils.ReorderService;
+import pl.javastart.bootcamp.utils.YouTubeLinkConverter;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class TaskService {
     }
 
     public void save(Task task) {
+        task.setSolutionVideo(YouTubeLinkConverter.convertLinksToOneFormat(task.getSolutionVideo()));
         taskRepository.save(task);
     }
 

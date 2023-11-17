@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.javastart.bootcamp.config.notfound.ResourceNotFoundException;
 import pl.javastart.bootcamp.domain.training.lesson.Lesson;
 import pl.javastart.bootcamp.domain.training.lesson.LessonRepository;
+import pl.javastart.bootcamp.utils.YouTubeLinkConverter;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -67,7 +68,7 @@ public class TrainingTemplateService {
         templateLesson.setNumber(dto.getNumber());
         Lesson lesson = templateLesson.getLesson();
         lesson.setTitle(dto.getTitle());
-        lesson.setVideoLinks(dto.getVideoLinks());
+        lesson.setVideoLinks(YouTubeLinkConverter.convertLinksToOneFormat(dto.getVideoLinks()));
         lesson.setLessonLinks(dto.getLessonLinks());
         dto.setTitle(templateLesson.getLesson().getTitle());
     }

@@ -3,6 +3,7 @@ package pl.javastart.bootcamp.domain.admin.topic;
 import org.springframework.stereotype.Service;
 import pl.javastart.bootcamp.domain.admin.task.ReorderDto;
 import pl.javastart.bootcamp.utils.ReorderService;
+import pl.javastart.bootcamp.utils.YouTubeLinkConverter;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class TopicService {
     }
 
     public void save(Topic topic) {
-
+        topic.setVideoLinks(YouTubeLinkConverter.convertLinksToOneFormat(topic.getVideoLinks()));
         topicRepository.save(topic);
     }
 

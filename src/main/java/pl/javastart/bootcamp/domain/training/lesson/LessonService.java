@@ -23,14 +23,12 @@ import pl.javastart.bootcamp.domain.user.User;
 import pl.javastart.bootcamp.domain.user.training.lesson.LessonWithPointsDto;
 import pl.javastart.bootcamp.domain.user.training.lesson.task.usersolution.UserTask;
 import pl.javastart.bootcamp.utils.BigDecimalFormatter;
+import pl.javastart.bootcamp.utils.YouTubeLinkConverter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -114,6 +112,7 @@ public class LessonService {
     }
 
     public void save(Lesson lesson) {
+        lesson.setVideoLinks(YouTubeLinkConverter.convertLinksToOneFormat(lesson.getVideoLinks()));
         lessonRepository.save(lesson);
     }
 
