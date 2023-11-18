@@ -56,6 +56,4 @@ public class AdminTrainingDescriptionController {
         trainingDescriptionService.update(trainingDescription);
         return "redirect:/admin/opisy";
     }
-
-
 }

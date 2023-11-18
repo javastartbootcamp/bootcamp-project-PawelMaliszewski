@@ -25,6 +25,7 @@ public class YouTubeLinkConverter {
                 stringBuilder.append(line).append("\r\n");
             }
         }
+        stringBuilder.delete(stringBuilder.length() - 2,stringBuilder.length());
         return stringBuilder.toString();
     }
 }
